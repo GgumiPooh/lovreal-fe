@@ -1,5 +1,11 @@
+import GoogleIcon from "../icons/GoogleIcon";
+
 function IntroRoute() {
-  return <div>Hello I'm IntroRoute</div>;
+  return (
+    <div>
+      <GoogleIcon className="size-100" />
+    </div>
+  );
 }
 
 export default IntroRoute;
