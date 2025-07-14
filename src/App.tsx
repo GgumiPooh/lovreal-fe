@@ -1,10 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import IntroRoute from "./routes/IntroRoute";
+
+import "./App.css";
 
 function App() {
-  return (<div>안녕</div>)
+  return (
+    <Routes>
+      <Route path="/intro" element={<IntroRoute />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
