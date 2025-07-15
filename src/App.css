@@ -12,8 +12,11 @@
 
 @theme {
   --font-signup: "SignUpButtonFont";
+  --font-title: "TitleFont";
 }
 
-#title {
-  font-family: "TitleFont";
+@layer base {
+  button:hover:not(:disabled) {
+    @apply cursor-pointer;
+  }
 }
