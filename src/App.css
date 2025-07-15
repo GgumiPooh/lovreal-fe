@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "TitleFont";
+  src: url("/src/fonts/TitleFont.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SignUpButtonFont";
+  src: url("/src/fonts/SignUpButtonFont.ttf") format("truetype");
+}
+
+@theme {
+  --font-signup: "SignUpButtonFont";
+}
+
+#title {
+  font-family: "TitleFont";
+}
