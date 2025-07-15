@@ -7,16 +7,22 @@ type Props = {
   children?: string;
   name?: string;
   placeholder?: string;
-  type?: string
+  type?: string;
 };
 
-function LabelWithInput({ className, children, name, placeholder, type }: Props) {
+function LabelWithInput({
+  className,
+  children,
+  name,
+  placeholder,
+  type,
+}: Props) {
   return (
-    <div className={twMerge(className, "flex gap-5 justify-end m-4")}>
+    <div className={twMerge("m-4 flex items-end", className)}>
       <Label htmlFor={name}>{children}</Label>
       <Input name={name} id={name} placeholder={placeholder} type={type} />
     </div>
   );
 }
 
-export default LabelWithInput
+export default LabelWithInput;
