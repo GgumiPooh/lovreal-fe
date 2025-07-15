@@ -9,7 +9,7 @@ type Props = {
 function Label({className, htmlFor, children} : Props) {
     return(
         <label
-        className={twMerge(className, "")}
+        className={twMerge(className, "font-signup")}
         htmlFor={htmlFor}
         >{children}</label>
     )
