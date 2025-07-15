@@ -14,3 +14,9 @@
   --font-signup: "SignUpButtonFont";
   --font-title: "TitleFont";
 }
+
+@base {
+  button:hover:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
