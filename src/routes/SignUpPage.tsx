@@ -15,7 +15,7 @@ function SignUpPage() {
           lovreal
         </h2>
 
-        <div className="my-10">
+        <div className="mt-10 mb-15">
           <LabelWithInput
             name="id"
             children="아이디"

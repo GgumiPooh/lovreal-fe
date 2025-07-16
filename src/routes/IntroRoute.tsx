@@ -11,21 +11,21 @@ function IntroRoute() {
       </h1>
 
       <div className="h-[60vh] px-4 gap-y-3 flex flex-col justify-end">
-        <SignUpButton className="bg-blue-50">
+        <SignUpButton className="bg-blue-50 outline-amber-950">
           <GoogleIcon className="size-9" />
           구글 계정으로 시작하기
         </SignUpButton>
-        <SignUpButton className="bg-amber-300">
+        <SignUpButton className="bg-amber-300 outline-amber-950">
           <KaKaoIcon className="size-9" />
           카카오 계정으로 시작하기
         </SignUpButton>
-        <Link to="/signup">
-          <SignUpButton className="bg-pink-300 w-full" onClick={() => {}}>
-            <span className="font-title text-[rgb(144,41,91)] text-4xl">
-              LR
-            </span>
-            회원가입하기
-          </SignUpButton>
+        <Link
+          to="/signup"
+          className="font-signup bg-pink-300 border-pink-300 rounded-2xl outline-amber-950
+        p-4 text-nowrap overflow-auto text-gray-700 text-center flex items-center gap-20 border-2 transition duration-300 hover:border-amber-950"
+        >
+          <span className="font-title text-[rgb(144,41,91)] text-4xl">LR</span>
+          회원가입하기
         </Link>
       </div>
     </div>

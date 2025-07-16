@@ -14,7 +14,7 @@ function Input({ name, id, className, placeholder, type }: Props) {
       name={name}
       id={id}
       className={twMerge(
-        "outline-none rounded-2xl mx-3 py-1.5 pl-2 pr-4 border-2 placeholder-gray-400 border-red-200 focus:border-red-600 hover:border-red-400 transition duration-300 ease-in-out",
+        "font-signup outline-none rounded-2xl mx-3 py-1.5 pl-2.5 pr-4 border-2 placeholder-gray-300 border-red-200 focus:border-red-600 hover:border-red-300 transition duration-300 ease-in-out",
         className
       )}
       placeholder={placeholder}
