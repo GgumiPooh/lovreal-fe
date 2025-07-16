@@ -6,23 +6,23 @@ import SignUpButton from "./SignUpButton";
 function IntroRoute() {
   return (
     <div className="text-center mt-25 max-w-120 mx-auto">
-      <h1 className="font-title text-6xl text-[rgb(144,41,91)] drop-shadow-[5px_5px_5px_rgba(252,129,195,0.8)]">
+      <h1 className="font-title text-8xl text-[rgb(144,41,91)] drop-shadow-[5px_5px_5px_rgba(252,129,195,0.8)]">
         lovreal
       </h1>
 
-      <div className="h-[60vh] px-4 gap-y-3 flex flex-col justify-end">
+      <div className="h-[65vh] px-4 gap-y-3 flex flex-col justify-end">
         <SignUpButton className="bg-blue-50 outline-amber-950">
-          <GoogleIcon className="size-9" />
+          <GoogleIcon className="size-8" />
           구글 계정으로 시작하기
         </SignUpButton>
         <SignUpButton className="bg-amber-300 outline-amber-950">
-          <KaKaoIcon className="size-9" />
+          <KaKaoIcon className="size-8" />
           카카오 계정으로 시작하기
         </SignUpButton>
         <Link
           to="/signup"
           className="font-signup bg-pink-300 border-pink-300 rounded-2xl outline-amber-950
-        p-4 text-nowrap overflow-auto text-gray-700 text-center flex items-center gap-20 border-2 transition duration-300 hover:border-amber-950"
+        p-2 pl-4 text-nowrap overflow-auto text-gray-700 text-center flex items-center gap-10 border-2 transition duration-300 hover:border-amber-950"
         >
           <span className="font-title text-[rgb(144,41,91)] text-4xl">LR</span>
           회원가입하기

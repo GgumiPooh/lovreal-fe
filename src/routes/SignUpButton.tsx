@@ -11,7 +11,7 @@ function SignUpButton({ className, children, onClick }: Props) {
   return (
     <button
       className={twMerge(
-        "p-4 text-nowrap overflow-auto text-gray-700 text-center flex items-center gap-20 rounded-2xl font-signup border-2 border-amber-50 transition duration-300 hover:border-amber-950"
+        "p-3 text-nowrap overflow-auto text-gray-700 text-center flex items-center gap-10 rounded-2xl font-signup border-2 border-amber-50 transition duration-200 hover:border-amber-950"
         ,className
       )}
       onClick={onClick}

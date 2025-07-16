@@ -4,16 +4,16 @@ import SignUpButton from "./SignUpButton";
 
 function SignUpPage() {
   return (
-    <div className="p-7 rounded-2xl shadow-2xl border-b-amber-950 w-120 h-130 mx-auto">
+    <div className="p-7 rounded-2xl shadow-xl border-b-amber-950 w-120 h-130 mx-auto my-20">
       <Link
         children="<"
         to="/"
         className="font-title text-6xl text-pink-800 hover:text-amber-950 transition-colors duration-200 ease-in-out"
       ></Link>
       <div className="text-center ">
-        <h2 className="font-title text-6xl text-[rgb(144,41,91)]">
+        <span className="font-title text-6xl text-[rgb(144,41,91)]">
           lovreal
-        </h2>
+        </span>
 
         <div className="mt-10 mb-15">
           <LabelWithInput
