@@ -11,6 +11,7 @@ type Props = {
 function Input({ name, id, className, placeholder, type }: Props) {
   return (
     <input
+      required
       name={name}
       id={id}
       className={twMerge(

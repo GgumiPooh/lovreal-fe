@@ -1,10 +1,13 @@
 import LabelWithInput from "./LabelWithInput";
 import Link from "./Link";
-import SignUpButton from "./SignUpButton";
+import SignUpButton from "./Button";
 
 function SignUpPage() {
   return (
-    <div className="p-7 rounded-2xl shadow-xl border-b-amber-950 w-120 h-130 mx-auto my-20">
+    <div
+      className=" p-7 rounded-2xl shadow-xl border-b-amber-950 w-120 h-130
+     mx-auto my-20  bg-gradient-to-b from-pink-200 to-pink-10 "
+    >
       <Link
         children="<"
         to="/"
@@ -35,38 +38,32 @@ function SignUpPage() {
             placeholder="비밀번호를 다시 입력하세요."
           ></LabelWithInput>
           <div className="mt-5">
-            <span className="font-signup text-gray-500 text-[0.9rem] mr-10">
+            <span className="font-signup text-gray-500 text-[0.9rem] mr-13">
               성별
             </span>
-            <label className="inline-flex items-center cursor-pointer mx-2">
-              <input
-                type="radio"
-                name="gender"
-                value="man"
-                className="hidden peer"
-              />
-              <span className="mx-2 text-sm font-signup text-gray-500">
-                남
-              </span>
-              <span className="w-5 h-5 mx-2 p-2 rounded-full border-2   border-red-300 hover:border-pink-400 transition duration-300 ease-in-out peer-checked:bg-red-200"></span>
-            </label>
-            <label className="inline-flex items-center cursor-pointer mx-2">
+            <label className="font-signup text-gray-500 text-[0.9rem] inline-flex items-center cursor-pointer mr-16">
+              남
               <input
                 type="radio"
                 name="gender"
                 value="female"
-                className="hidden peer"
+                className="appearance-none ml-3 border-0 ring-3 ring-pink-200 rounded-full w-3.5 h-3.5 checked:bg-pink-300  checked:ring-pink-200 hover:ring-5 transition-all duration-200"
               />
-              <span className="ml-3 mr-2 text-sm font-signup text-gray-500">
-                여
-              </span>
-              <span className="w-5 h-5 mx-2 p-2 rounded-full border-2   border-red-300 hover:border-pink-400 transition duration-300 ease-in-out peer-checked:bg-red-200"></span>
+            </label>
+            <label className="font-signup text-gray-500 text-[0.9rem] inline-flex items-center cursor-pointer mr-3">
+              여
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                className="appearance-none ml-3 border-0 ring-3 ring-pink-200 rounded-full w-3.5 h-3.5 checked:bg-pink-300  checked:ring-pink-200 hover:ring-5 transition-all duration-200"
+              />
             </label>
           </div>
         </div>
         <SignUpButton
           children="시작하기"
-          className="mx-auto px-5 py-4 outline-[rgb(164,71,116)] hover:text-[rgb(247,205,225)] text-[rgb(63,27,44)] hover:bg-[rgb(164,71,116)] hover:border-amber-50 bg-[rgb(197,140,167)] transition-colors duration-400 ease-in-out"
+          className="mx-auto px-5 py-4 outline-[rgb(164,71,116)] hover:text-[rgb(247,205,225)] text-[rgb(63,27,44)] hover:bg-[rgb(164,71,116)] hover:border-amber-50 bg-[rgb(197,140,167)] transition-colors duration-300 active:bg-[rgb(210,83,142)]"
         ></SignUpButton>
       </div>
     </div>
