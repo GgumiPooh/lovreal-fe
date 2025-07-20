@@ -4,9 +4,10 @@ import SignUpButton from "./Button";
 
 function SignUpPage() {
   return (
-    <div
+    <form
       className=" p-7 rounded-2xl shadow-xl border-b-amber-950 w-120 h-130
      mx-auto my-20  bg-gradient-to-b from-pink-200 to-pink-10 "
+      onSubmit={handleSubmit}
     >
       <Link
         children="<"
@@ -32,7 +33,6 @@ function SignUpPage() {
             placeholder="비밀번호를 입력하세요."
           ></LabelWithInput>
           <LabelWithInput
-            name="passwordCheck"
             children="비밀번호 확인"
             type="password"
             placeholder="비밀번호를 다시 입력하세요."
@@ -44,9 +44,9 @@ function SignUpPage() {
             <label className="font-signup text-gray-500 text-[0.9rem] inline-flex items-center cursor-pointer mr-16">
               남
               <input
-                type="radio"
                 name="gender"
-                value="female"
+                type="radio"
+                value="man"
                 className="appearance-none ml-3 border-0 ring-3 ring-pink-200 rounded-full w-3.5 h-3.5 checked:bg-pink-300  checked:ring-pink-200 hover:ring-5 transition-all duration-200"
               />
             </label>
@@ -62,12 +62,26 @@ function SignUpPage() {
           </div>
         </div>
         <SignUpButton
+          type="submit"
           children="시작하기"
           className="mx-auto px-5 py-4 outline-[rgb(164,71,116)] hover:text-[rgb(247,205,225)] text-[rgb(63,27,44)] hover:bg-[rgb(164,71,116)] hover:border-amber-50 bg-[rgb(197,140,167)] transition-colors duration-300 active:bg-[rgb(210,83,142)]"
         ></SignUpButton>
       </div>
-    </div>
+    </form>
   );
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const reponse = await fetch("http://localhost:8080/love", {
+      method: "POST",
+      body: formData,
+    });
+    const result = await reponse.json();
+    console.log(result);
+  }
 }
 
 export default SignUpPage;
