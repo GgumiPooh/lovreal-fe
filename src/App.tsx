@@ -3,7 +3,6 @@ import IntroRoute from "./routes/IntroRoute";
 
 import "./App.css";
 import SignUpPage from "./routes/SignUpPage";
-import Link from "./routes/Link";
 
 function App() {
   return (

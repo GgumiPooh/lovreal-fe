@@ -10,8 +10,9 @@ function Label({ className, htmlFor, children }: Props) {
   return (
     <label
       className={twMerge(
-        className,
-        "font-signup text-end text-gray-500 text-[0.9rem] p-[0.3rem] w-[7rem]")}
+        "font-signup text-end text-gray-500 text-[0.9rem] p-[0.3rem] w-[7rem]",
+        className
+      )}
       htmlFor={htmlFor}
     >
       {children}

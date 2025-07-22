@@ -1,12 +1,12 @@
 import GoogleIcon from "../icons/GoogleIcon";
 import KaKaoIcon from "../icons/KakaoIcon";
-import Link from "./Link";
 import SignUpButton from "./Button";
+import Link from "./Link";
 
 function IntroRoute() {
   return (
-    <div className="text-center mt-25 max-w-120 mx-auto">
-      <h1 className="font-title text-8xl text-[rgb(144,41,91)] drop-shadow-[5px_5px_5px_rgba(252,129,195,0.8)]">
+    <div className="mt-25 max-w-120 mx-auto">
+      <h1 className="text-center font-title text-8xl text-[rgb(144,41,91)] drop-shadow-[5px_5px_5px_rgba(252,129,195,0.8)]">
         lovreal
       </h1>
 
@@ -22,7 +22,7 @@ function IntroRoute() {
         <Link
           to="/signup"
           className="font-signup bg-pink-300 border-pink-300 rounded-2xl outline-amber-950
-        p-2 pl-4 text-nowrap overflow-auto text-gray-700 text-center flex items-center gap-10 border-2 transition duration-300 hover:border-amber-950"
+        p-2 pl-4 text-nowrap text-gray-700 flex items-center gap-10 border-2 transition duration-300 hover:border-amber-950"
         >
           <span className="font-title text-[rgb(144,41,91)] text-4xl">LR</span>
           회원가입하기
