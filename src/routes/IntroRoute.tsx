@@ -6,7 +6,8 @@ import Link from "./Link";
 function IntroRoute() {
   return (
     <div className="mt-25 max-w-120 mx-auto">
-      <h1 className="text-center font-title text-8xl text-[rgb(144,41,91)] drop-shadow-[5px_5px_5px_rgba(252,129,195,0.8)]">
+      <Link to="/login" className="block text-end underline">로그인</Link>
+      <h1 className="text-center font-title mt-8 text-8xl text-[rgb(144,41,91)] drop-shadow-[5px_5px_5px_rgba(252,129,195,0.8)]">
         lovreal
       </h1>
 

@@ -37,6 +37,7 @@ function SignUpPage() {
             비밀번호
           </LabelWithInput>
           <LabelWithInput
+            name="passwordCheck"
             type="password"
             placeholder="비밀번호를 다시 입력하세요."
           >
@@ -83,9 +84,23 @@ function SignUpPage() {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    const reponse = await fetch("http://localhost:8080/love", {
+    const data = {
+      id: formData.get("id"),
+      password: formData.get("password"),
+      passwordCheck: formData.get("passwordCheck"),
+      gender: formData.get("gender"),
+    };
+
+    if (data.password != data.passwordCheck) {
+      alert("비밀번호를 다시 확인해주세요.");
+      return;
+    }
+    const reponse = await fetch("http://localhost:8080/signup", {
       method: "POST",
-      body: formData,
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(
+       data
+      ),
     });
     const result = await reponse.json();
     console.log(result);

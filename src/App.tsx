@@ -3,6 +3,7 @@ import IntroRoute from "./routes/IntroRoute";
 
 import "./App.css";
 import SignUpPage from "./routes/SignUpPage";
+import LoginPage from "./routes/LoginPage"
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<IntroRoute />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   );
