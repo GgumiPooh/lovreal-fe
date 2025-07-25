@@ -30,7 +30,7 @@ function SignUpPage() {
             >
               아이디
             </LabelWithInput>
-            <button onClick={idCheck}>중복확인</button>
+            <button>중복확인</button>
           </div>
           <LabelWithInput
             name="password"
