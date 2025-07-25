@@ -25,7 +25,7 @@ function SignUpPage() {
     if (reponse.status === 409) {
       setIsIdChecked(false);
       setIdCheckText("중복확인");
-      inputRef.current?.focus()
+      inputRef.current?.focus();
     } else {
       setIsIdChecked(true);
       setIdCheckText("확인완료 ✅");
@@ -97,6 +97,8 @@ function SignUpPage() {
             >
               아이디
             </LabelWithInput>
+
+            <button>중복확인</button>
           </div>
           <LabelWithInput
             name="password"
