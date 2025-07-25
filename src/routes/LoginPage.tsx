@@ -64,8 +64,8 @@ function SignUpPage() {
       },
       body: JSON.stringify(data),
     });
-    // const result = await reponse.status;
-    console.log(reponse);
+    const result = await reponse.text();
+    console.log(result);
   }
 }
 

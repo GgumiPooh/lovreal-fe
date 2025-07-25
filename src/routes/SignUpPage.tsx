@@ -1,8 +1,68 @@
+import { useRef, useState } from "react";
 import SignUpButton from "./Button";
 import LabelWithInput from "./LabelWithInput";
 import Link from "./Link";
 
 function SignUpPage() {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [isIdChecked, setIsIdChecked] = useState(false);
+  const [id, setId] = useState("");
+  const [idCheckText, setIdCheckText] = useState("중복확인");
+
+  const handleIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value);
+    setIsIdChecked(false);
+    setIdCheckText("중복확인");
+  };
+
+  async function idCheck() {
+    if (id === "") {
+      return;
+    }
+
+    const reponse = await fetch(`http://localhost:8080/idCheck?id=${id}`);
+    const data = await reponse.json();
+    if (reponse.status === 409) {
+      setIsIdChecked(false);
+      setIdCheckText("중복확인");
+      inputRef.current?.focus()
+    } else {
+      setIsIdChecked(true);
+      setIdCheckText("확인완료 ✅");
+    }
+    alert(data.message);
+    return;
+  }
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (isIdChecked === false) {
+      alert("아이디 중복 체크를 해주세요.");
+      return;
+    }
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const data = {
+      id: formData.get("id"),
+      password: formData.get("password"),
+      passwordCheck: formData.get("passwordCheck"),
+      gender: formData.get("gender"),
+    };
+
+    if (data.password != data.passwordCheck) {
+      alert("비밀번호를 다시 확인해주세요.");
+      return;
+    }
+    const reponse = await fetch("http://localhost:8080/signUp", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const result = await reponse.text();
+    console.log(result);
+  }
+
   return (
     <form
       className="p-7 rounded-2xl shadow-xl border-b-amber-950 w-120 h-130
@@ -20,17 +80,23 @@ function SignUpPage() {
         <div className="text-center font-title text-6xl text-[rgb(144,41,91)]">
           lovreal
         </div>
+        <button
+          onClick={idCheck}
+          children={idCheckText}
+          className="text-end inline-block"
+        />
 
         <div className="mt-10">
-          <div>
+          <div className="text-end">
             <LabelWithInput
+              ref={inputRef}
               name="id"
               type="text"
               placeholder="아이디를 입력하세요."
+              onChange={handleIdChange}
             >
               아이디
             </LabelWithInput>
-            <button>중복확인</button>
           </div>
           <LabelWithInput
             name="password"
@@ -81,30 +147,6 @@ function SignUpPage() {
       </div>
     </form>
   );
-}
-async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-  event.preventDefault();
-  const form = event.currentTarget;
-  const formData = new FormData(form);
-
-  const data = {
-    id: formData.get("id"),
-    password: formData.get("password"),
-    passwordCheck: formData.get("passwordCheck"),
-    gender: formData.get("gender"),
-  };
-
-  if (data.password != data.passwordCheck) {
-    alert("비밀번호를 다시 확인해주세요.");
-    return;
-  }
-  const reponse = await fetch("http://localhost:8080/signup", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  const result = await reponse.json();
-  console.log(result);
 }
 
 export default SignUpPage;
