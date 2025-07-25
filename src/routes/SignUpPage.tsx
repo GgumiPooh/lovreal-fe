@@ -22,13 +22,16 @@ function SignUpPage() {
         </div>
 
         <div className="mt-10">
-          <LabelWithInput
-            name="id"
-            type="text"
-            placeholder="아이디를 입력하세요."
-          >
-            아이디
-          </LabelWithInput>
+          <div>
+            <LabelWithInput
+              name="id"
+              type="text"
+              placeholder="아이디를 입력하세요."
+            >
+              아이디
+            </LabelWithInput>
+            <button onClick={idCheck}>중복확인</button>
+          </div>
           <LabelWithInput
             name="password"
             type="text"
@@ -78,33 +81,30 @@ function SignUpPage() {
       </div>
     </form>
   );
+}
+async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const formData = new FormData(form);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const formData = new FormData(form);
+  const data = {
+    id: formData.get("id"),
+    password: formData.get("password"),
+    passwordCheck: formData.get("passwordCheck"),
+    gender: formData.get("gender"),
+  };
 
-    const data = {
-      id: formData.get("id"),
-      password: formData.get("password"),
-      passwordCheck: formData.get("passwordCheck"),
-      gender: formData.get("gender"),
-    };
-
-    if (data.password != data.passwordCheck) {
-      alert("비밀번호를 다시 확인해주세요.");
-      return;
-    }
-    const reponse = await fetch("http://localhost:8080/signup", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(
-       data
-      ),
-    });
-    const result = await reponse.json();
-    console.log(result);
+  if (data.password != data.passwordCheck) {
+    alert("비밀번호를 다시 확인해주세요.");
+    return;
   }
+  const reponse = await fetch("http://localhost:8080/signup", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  const result = await reponse.json();
+  console.log(result);
 }
 
 export default SignUpPage;
