@@ -1,14 +1,14 @@
-import type {ReactNode } from "react";
+import type { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
-  type?:'button' | 'reset' | "submit";
+  type?: "button" | "reset" | "submit";
   className?: string;
   children?: ReactNode;
   onClick?: () => void;
 };
 
-function SignUpButton({ className, children, type='button', onClick }: Props) {
+function Button({ className, children, type = "button", onClick }: Props) {
   return (
     <button
       type={type}
@@ -23,4 +23,4 @@ function SignUpButton({ className, children, type='button', onClick }: Props) {
   );
 }
 
-export default SignUpButton;
+export default Button;

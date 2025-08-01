@@ -1,8 +1,45 @@
-import SignUpButton from "./Button";
+import {useNavigate } from "react-router-dom";
+import Button from "./Button";
 import LabelWithInput from "./LabelWithInput";
 import Link from "./Link";
 
 function SignUpPage() {
+  const navigate = useNavigate();
+  window.localStorage.setItem("hyoeun jjang", "21");
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const data = {
+      id: formData.get("id"),
+      password: formData.get("password"),
+      passwordCheck: formData.get("passwordCheck"),
+      gender: formData.get("gender"),
+    };
+
+    if (data.password != data.passwordCheck) {
+      alert("비밀번호를 다시 확인해주세요.");
+      return;
+    }
+    const response = await fetch("http://localhost:8080/signUp", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
+      credentials: "include",
+    });
+
+    const result = await response.text();
+    alert(result);
+    if (response.status === 200) {
+      navigate("/login");
+    } else {
+      navigate("/redirect");
+    }
+  }
+  document.cookie = "theme=dark; path=/; max-age=3600";
+
   return (
     <form
       className="p-7 rounded-2xl shadow-xl border-b-amber-950 w-120 h-130
@@ -72,39 +109,14 @@ function SignUpPage() {
           </div>
         </div>
 
-        <SignUpButton
+        <Button
           type="submit"
           className="mt-13 mx-auto px-5 py-4 outline-[rgb(164,71,116)] hover:text-[rgb(247,205,225)] text-[rgb(63,27,44)] hover:bg-[rgb(164,71,116)] hover:border-amber-50 bg-[rgb(197,140,167)] transition-colors duration-300 active:bg-[rgb(210,83,142)]"
         >
           시작하기
-        </SignUpButton>
+        </Button>
       </div>
     </form>
   );
 }
-async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-  event.preventDefault();
-  const form = event.currentTarget;
-  const formData = new FormData(form);
-
-  const data = {
-    id: formData.get("id"),
-    password: formData.get("password"),
-    passwordCheck: formData.get("passwordCheck"),
-    gender: formData.get("gender"),
-  };
-
-  if (data.password != data.passwordCheck) {
-    alert("비밀번호를 다시 확인해주세요.");
-    return;
-  }
-  const reponse = await fetch("http://localhost:8080/signup", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  const result = await reponse.json();
-  console.log(result);
-}
-
 export default SignUpPage;

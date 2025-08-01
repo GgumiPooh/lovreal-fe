@@ -1,9 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import Button from "./Button";
+import { Link, useNavigate } from "react-router-dom";
 import LabelWithInput from "./LabelWithInput";
-import Link from "./Link";
+import Button from "./Button";
 
-function SignUpPage() {
+function RequestCouple() {
   const navigate = useNavigate();
   return (
     <form
@@ -25,18 +24,11 @@ function SignUpPage() {
 
         <div className="mt-10">
           <LabelWithInput
-            name="id"
+            name="requestCoupleId"
             type="text"
-            placeholder="아이디를 입력하세요."
+            placeholder="커플을 요청할 아이디를 입력해주세요."
           >
-            아이디
-          </LabelWithInput>
-          <LabelWithInput
-            name="password"
-            type="text"
-            placeholder="비밀번호를 입력하세요."
-          >
-            비밀번호
+            커플 요청
           </LabelWithInput>
         </div>
 
@@ -44,7 +36,7 @@ function SignUpPage() {
           type="submit"
           className="mt-13 mx-auto px-5 py-4 outline-[rgb(164,71,116)] hover:text-[rgb(247,205,225)] text-[rgb(63,27,44)] hover:bg-[rgb(164,71,116)] hover:border-amber-50 bg-[rgb(197,140,167)] transition-colors duration-300 active:bg-[rgb(210,83,142)]"
         >
-          로그인
+          요청
         </Button>
       </div>
     </form>
@@ -56,11 +48,10 @@ function SignUpPage() {
     const form = event.currentTarget;
     const formData = new FormData(form);
     const data = {
-      id: formData.get("id"),
-      password: formData.get("password"),
+      requestCoupleId: formData.get("requestCoupleId"),
     };
 
-    const response = await fetch("http://localhost:8080/login", {
+    const response = await fetch("http://localhost:8080/member/requestCouple", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -70,13 +61,13 @@ function SignUpPage() {
     });
     alert(await response.text());
     if (response.status == 200) {
-      navigate("/member/requestCouple");
+      navigate("/member/acceptCouple");
     } else {
-      navigate("/login");
+      navigate("/member/requestCouple");
     }
     // const result = await reponse.status;
     console.log(response);
   }
 }
 
-export default SignUpPage;
+export default RequestCouple;
