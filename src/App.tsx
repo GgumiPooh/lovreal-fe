@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AcceptCouplePage from "./routes/AcceptCouplePage";
-import CouplePage from "./routes/CouplePage";
-import IntroRoute from "./routes/IntroRoute";
-import LoginPage from "./routes/LoginPage";
-import RequestCouple from "./routes/RequCouplePage";
-import SignUpPage from "./routes/SignUpPage";
+import AcceptCouplePage from "./pages/AcceptCouplePage";
+import CouplePage from "./pages/CouplePage";
+import IntroRoute from "./pages/IntroPage";
+import LoginPage from "./pages/LoginPage";
+import RequestCouple from "./pages/RequCouplePage";
+import SignUpPage from "./pages/SignUpPage";
 
 import "./styles/globals.css";
 
