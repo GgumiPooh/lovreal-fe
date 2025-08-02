@@ -1,0 +1,10 @@
+{
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.codeActionsOnSave": {
+      "source.sortImports": "always",
+      "source.removeUnusedImports": "always"
+    },
+}
+  
