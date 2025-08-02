@@ -5,15 +5,15 @@ import KaKaoIcon from "../icons/KakaoIcon";
 
 function IntroRoute() {
   return (
-    <div className="mt-25 max-w-120 mx-auto">
+    <div className="mx-auto mt-25 max-w-120">
       <Link to="/login" className="block text-end underline">
         로그인
       </Link>
-      <h1 className="text-center font-title mt-8 text-8xl text-[rgb(144,41,91)] drop-shadow-[5px_5px_5px_rgba(252,129,195,0.8)]">
+      <h1 className="mt-8 text-center font-title text-8xl text-[rgb(144,41,91)] drop-shadow-[5px_5px_5px_rgba(252,129,195,0.8)]">
         lovreal
       </h1>
 
-      <div className="h-[65vh] px-4 gap-y-3 flex flex-col justify-end">
+      <div className="flex h-[65vh] flex-col justify-end gap-y-3 px-4">
         <Button className="bg-blue-50 outline-amber-950">
           <GoogleIcon className="size-8" />
           구글 계정으로 시작하기
@@ -24,10 +24,9 @@ function IntroRoute() {
         </Button>
         <Link
           to="/signup"
-          className="font-signup bg-pink-300 border-pink-300 rounded-2xl outline-amber-950
-        p-2 pl-4 text-nowrap text-gray-700 flex items-center gap-10 border-2 transition duration-300 hover:border-amber-950"
+          className="flex items-center gap-10 rounded-2xl border-2 border-pink-300 bg-pink-300 p-2 pl-4 font-signup text-nowrap text-gray-700 outline-amber-950 transition duration-300 hover:border-amber-950"
         >
-          <span className="font-title text-[rgb(144,41,91)] text-4xl">LR</span>
+          <span className="font-title text-4xl text-[rgb(144,41,91)]">LR</span>
           회원가입하기
         </Link>
       </div>
