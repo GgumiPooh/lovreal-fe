@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import Button from "./Button";
-import LabelWithInput from "./LabelWithInput";
-import Link from "./Link";
+import Button from "../components/Button";
+import LabelWithInput from "../components/LabelWithInput";
+import Link from "../components/Link";
 
 function SignUpPage() {
   const navigate = useNavigate();

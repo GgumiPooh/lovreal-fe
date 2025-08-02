@@ -1,7 +1,7 @@
+import Button from "../components/Button";
+import Link from "../components/Link";
 import GoogleIcon from "../icons/GoogleIcon";
 import KaKaoIcon from "../icons/KakaoIcon";
-import Button from "./Button";
-import Link from "./Link";
 
 function IntroRoute() {
   return (

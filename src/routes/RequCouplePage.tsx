@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import LabelWithInput from "./LabelWithInput";
-import Button from "./Button";
+import Button from "../components/Button";
+import LabelWithInput from "../components/LabelWithInput";
 
 function RequestCouple() {
   const navigate = useNavigate();

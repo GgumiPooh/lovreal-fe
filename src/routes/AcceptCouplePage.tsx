@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 function CouplePage() {
   const [data, setData] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     // GET 요청 보내기
     const fetchCoupleData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/accept/couple", {
-          method: "GET",
-          credentials: "include",
-          headers: { "content-type": "application/json" },
-        });
+        const response = await fetch(
+          "http://localhost:8080/api/accept/couple",
+          {
+            method: "GET",
+            credentials: "include",
+            headers: { "content-type": "application/json" },
+          }
+        );
         const data = await response.json();
         console.log("Received data:", data);
         setData(data);
@@ -34,23 +37,24 @@ function CouplePage() {
       <div id="memberId">👤 Member ID: {data.id}</div>
       <div id="requestCouple">❤️ send Couple: {data.coupleRequest}</div>
       {/* <div id="sendrequest">📮 Request Request : {data.coupleId}</div> */}
-      <Button className="bg-pink-200" onClick={AcceptCouple}>수락하기</Button>
+      <Button className="bg-pink-200" onClick={AcceptCouple}>
+        수락하기
+      </Button>
     </div>
   );
-  
+
   async function AcceptCouple() {
     const response = await fetch("http://localhost:8080/member/acceptCouple", {
       method: "POST",
       credentials: "include",
-      headers: { "content-type": "application/json"},
+      headers: { "content-type": "application/json" },
     });
-      alert(response.text());
-      if (response.status == 200) {
-        navigate("/member/couple");
-      } 
-      else if(response.status == 402) {
-        navigate("/login");
-      }
+    alert(response.text());
+    if (response.status == 200) {
+      navigate("/member/couple");
+    } else if (response.status == 402) {
+      navigate("/login");
+    }
   }
 }
 

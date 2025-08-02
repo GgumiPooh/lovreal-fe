@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import IntroRoute from "./routes/IntroRoute";
-
-import "./App.css";
-import SignUpPage from "./routes/SignUpPage";
-import LoginPage from "./routes/LoginPage"
 import AcceptCouplePage from "./routes/AcceptCouplePage";
-import RequestCouple from "./routes/RequCouplePage";
 import CouplePage from "./routes/CouplePage";
+import IntroRoute from "./routes/IntroRoute";
+import LoginPage from "./routes/LoginPage";
+import RequestCouple from "./routes/RequCouplePage";
+import SignUpPage from "./routes/SignUpPage";
+
+import "./styles/globals.css";
 
 function App() {
   return (
@@ -18,8 +18,6 @@ function App() {
         <Route path="/member/couple" element={<CouplePage />} />
         <Route path="member/requestCouple" element={<RequestCouple />} />
         <Route path="member/acceptCouple" element={<AcceptCouplePage />} />
-
-
       </Routes>
     </BrowserRouter>
   );

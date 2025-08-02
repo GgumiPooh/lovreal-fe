@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 
 function CouplePage() {
   const [data, setData] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     // GET 요청 보내기
     const fetchCoupleData = async () => {
@@ -34,6 +33,7 @@ function CouplePage() {
       <div id="memberId">👤 Member ID: {data.id}</div>
       <div id="sendrequest">your love : {data.coupleRequest}</div>
     </div>
-  );}
+  );
+}
 
 export default CouplePage;
