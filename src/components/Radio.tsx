@@ -6,9 +6,10 @@ type Props = {
   label: string;
   name: string;
   value: string;
+  defaultChecked?: boolean;
 };
 
-function Radio({ className, label, name, value }: Props) {
+function Radio({ className, label, name, value, defaultChecked }: Props) {
   return (
     <div className={twMerge("inline-flex items-center gap-x-3", className)}>
       <Label className="min-w-0" htmlFor={name}>
@@ -21,6 +22,7 @@ function Radio({ className, label, name, value }: Props) {
         id={name}
         name={name}
         value={value}
+        defaultChecked={defaultChecked}
       />
     </div>
   );

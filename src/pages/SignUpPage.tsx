@@ -27,49 +27,48 @@ function SignUpPage() {
             LOVREAL
           </h1>
 
-          <section className="mt-10 space-y-5">
-            <LabelWithInput
-              align="right"
-              name="id"
-              type="text"
-              placeholder="아이디를 입력하세요."
-            >
-              아이디
-            </LabelWithInput>
+          <LabelWithInput
+            className="mt-10"
+            align="right"
+            name="id"
+            type="text"
+            placeholder="아이디를 입력하세요."
+          >
+            아이디
+          </LabelWithInput>
 
-            <LabelWithInput
-              align="right"
-              name="password"
-              type="text"
-              placeholder="비밀번호를 입력하세요."
-            >
-              비밀번호
-            </LabelWithInput>
+          <LabelWithInput
+            className="mt-5"
+            align="right"
+            name="password"
+            type="text"
+            placeholder="비밀번호를 입력하세요."
+          >
+            비밀번호
+          </LabelWithInput>
 
-            <LabelWithInput
-              align="right"
-              name="passwordCheck"
-              type="password"
-              placeholder="비밀번호를 다시 입력하세요."
-            >
-              비밀번호 확인
-            </LabelWithInput>
+          <LabelWithInput
+            className="mt-5"
+            align="right"
+            name="passwordCheck"
+            type="password"
+            placeholder="비밀번호를 다시 입력하세요."
+          >
+            비밀번호 확인
+          </LabelWithInput>
 
-            <div className="flex items-center gap-x-5">
-              <Label align="right">성별</Label>
+          <div className="mt-5 flex items-center gap-x-5">
+            <Label align="right">성별</Label>
 
-              <div className="flex w-full gap-x-7">
-                <Radio label="남" name="gender" value="male" />
-                <Radio label="여" name="gender" value="female" />
-              </div>
+            <div className="flex w-full gap-x-7">
+              <Radio label="남" name="gender" value="male" defaultChecked />
+              <Radio label="여" name="gender" value="female" />
             </div>
-          </section>
+          </div>
 
-          <section className="mt-10">
-            <Button block type="submit">
-              시작하기
-            </Button>
-          </section>
+          <Button className="mt-10" block type="submit">
+            시작하기
+          </Button>
         </form>
       </Box>
     </div>
@@ -80,6 +79,15 @@ function SignUpPage() {
 
     const data = new FormData(event.currentTarget);
 
+    if (
+      data.get("id") === "" ||
+      data.get("password") === "" ||
+      data.get("passwordCheck") === ""
+    ) {
+      alert("모든 필드를 입력해주세요.");
+      return;
+    }
+
     if (data.get("password") !== data.get("passwordCheck")) {
       alert("비밀번호를 다시 확인해주세요.");
       return;
@@ -87,7 +95,6 @@ function SignUpPage() {
 
     const response = await fetch("http://localhost:8080/signUp", {
       method: "POST",
-      headers: { "content-type": "application/json" },
       credentials: "include",
       body: data,
     });
