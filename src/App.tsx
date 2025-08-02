@@ -16,8 +16,8 @@ function App() {
         <Route path="/signUp" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/member/couple" element={<CouplePage />} />
-        <Route path="member/requestCouple" element={<RequestCouple />} />
-        <Route path="member/acceptCouple" element={<AcceptCouplePage />} />
+        <Route path="/member/requestCouple" element={<RequestCouple />} />
+        <Route path="/member/acceptCouple" element={<AcceptCouplePage />} />
       </Routes>
     </BrowserRouter>
   );
