@@ -7,13 +7,12 @@ function SignUpPage() {
   const navigate = useNavigate();
   return (
     <form
-      className="p-7 rounded-2xl shadow-xl border-b-amber-950 w-120 h-130
-     mx-auto my-20 bg-gradient-to-b from-pink-200 to-pink-10"
+      className="to-pink-10 mx-auto my-20 h-130 w-120 rounded-2xl border-b-amber-950 bg-gradient-to-b from-pink-200 p-7 shadow-xl"
       onSubmit={handleSubmit}
     >
       <Link
         to="/"
-        className="outline-none font-title text-6xl text-pink-800 hover:text-amber-950 transition-colors duration-200 ease-in-out"
+        className="font-title text-6xl text-pink-800 transition-colors duration-200 ease-in-out outline-none hover:text-amber-950"
       >
         {"<"}
       </Link>
@@ -42,7 +41,7 @@ function SignUpPage() {
 
         <Button
           type="submit"
-          className="mt-13 mx-auto px-5 py-4 outline-[rgb(164,71,116)] hover:text-[rgb(247,205,225)] text-[rgb(63,27,44)] hover:bg-[rgb(164,71,116)] hover:border-amber-50 bg-[rgb(197,140,167)] transition-colors duration-300 active:bg-[rgb(210,83,142)]"
+          className="mx-auto mt-13 bg-[rgb(197,140,167)] px-5 py-4 text-[rgb(63,27,44)] outline-[rgb(164,71,116)] transition-colors duration-300 hover:border-amber-50 hover:bg-[rgb(164,71,116)] hover:text-[rgb(247,205,225)] active:bg-[rgb(210,83,142)]"
         >
           로그인
         </Button>

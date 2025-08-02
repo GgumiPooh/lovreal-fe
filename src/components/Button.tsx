@@ -13,8 +13,8 @@ function Button({ className, children, type = "button", onClick }: Props) {
     <button
       type={type}
       className={twMerge(
-        "p-3 text-nowrap overflow-auto text-gray-700 text-center flex items-center gap-10 rounded-2xl font-signup border-2 border-amber-50 transition duration-200 hover:border-amber-950",
-        className
+        "flex items-center gap-10 overflow-auto rounded-2xl border-2 border-amber-50 p-3 text-center font-signup text-nowrap text-gray-700 transition duration-200 hover:border-amber-950",
+        className,
       )}
       onClick={onClick}
     >

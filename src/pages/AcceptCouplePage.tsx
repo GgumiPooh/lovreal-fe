@@ -15,7 +15,7 @@ function CouplePage() {
             method: "GET",
             credentials: "include",
             headers: { "content-type": "application/json" },
-          }
+          },
         );
         const data = await response.json();
         console.log("Received data:", data);

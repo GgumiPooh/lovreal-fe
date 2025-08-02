@@ -42,13 +42,12 @@ function SignUpPage() {
 
   return (
     <form
-      className="p-7 rounded-2xl shadow-xl border-b-amber-950 w-120 h-130
-     mx-auto my-20 bg-gradient-to-b from-pink-200 to-pink-10"
+      className="to-pink-10 mx-auto my-20 h-130 w-120 rounded-2xl border-b-amber-950 bg-gradient-to-b from-pink-200 p-7 shadow-xl"
       onSubmit={handleSubmit}
     >
       <Link
         to="/"
-        className="outline-none font-title text-6xl text-pink-800 hover:text-amber-950 transition-colors duration-200 ease-in-out"
+        className="font-title text-6xl text-pink-800 transition-colors duration-200 ease-in-out outline-none hover:text-amber-950"
       >
         {"<"}
       </Link>
@@ -85,25 +84,25 @@ function SignUpPage() {
           </LabelWithInput>
 
           <div className="mt-5 flex justify-center">
-            <span className="font-signup text-gray-500 text-[0.9rem]">
+            <span className="font-signup text-[0.9rem] text-gray-500">
               성별
             </span>
-            <label className="ml-13 font-signup text-gray-500 text-[0.9rem] inline-flex items-center cursor-pointer">
+            <label className="ml-13 inline-flex cursor-pointer items-center font-signup text-[0.9rem] text-gray-500">
               남
               <input
                 name="gender"
                 type="radio"
                 value="man"
-                className="appearance-none ml-3 border-0 ring-3 ring-pink-200 rounded-full w-3.5 h-3.5 checked:bg-pink-300  checked:ring-pink-200 hover:ring-5 transition-all duration-200"
+                className="ml-3 h-3.5 w-3.5 appearance-none rounded-full border-0 ring-3 ring-pink-200 transition-all duration-200 checked:bg-pink-300 checked:ring-pink-200 hover:ring-5"
               />
             </label>
-            <label className="ml-16 font-signup text-gray-500 text-[0.9rem] inline-flex items-center cursor-pointer mr-3">
+            <label className="mr-3 ml-16 inline-flex cursor-pointer items-center font-signup text-[0.9rem] text-gray-500">
               여
               <input
                 type="radio"
                 name="gender"
                 value="female"
-                className="appearance-none ml-3 border-0 ring-3 ring-pink-200 rounded-full w-3.5 h-3.5 checked:bg-pink-300  checked:ring-pink-200 hover:ring-5 transition-all duration-200"
+                className="ml-3 h-3.5 w-3.5 appearance-none rounded-full border-0 ring-3 ring-pink-200 transition-all duration-200 checked:bg-pink-300 checked:ring-pink-200 hover:ring-5"
               />
             </label>
           </div>
@@ -111,7 +110,7 @@ function SignUpPage() {
 
         <Button
           type="submit"
-          className="mt-13 mx-auto px-5 py-4 outline-[rgb(164,71,116)] hover:text-[rgb(247,205,225)] text-[rgb(63,27,44)] hover:bg-[rgb(164,71,116)] hover:border-amber-50 bg-[rgb(197,140,167)] transition-colors duration-300 active:bg-[rgb(210,83,142)]"
+          className="mx-auto mt-13 bg-[rgb(197,140,167)] px-5 py-4 text-[rgb(63,27,44)] outline-[rgb(164,71,116)] transition-colors duration-300 hover:border-amber-50 hover:bg-[rgb(164,71,116)] hover:text-[rgb(247,205,225)] active:bg-[rgb(210,83,142)]"
         >
           시작하기
         </Button>

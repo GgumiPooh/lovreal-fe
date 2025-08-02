@@ -37,8 +37,8 @@ function Input({
       name={name}
       id={id}
       className={twMerge(
-        "font-signup outline-none rounded-2xl mx-3 py-1.5 pl-2.5 pr-4 border-2 placeholder-gray-300 border-red-200 focus:border-red-600 hover:border-red-300 transition duration-300 ease-in-out",
-        className
+        "mx-3 rounded-2xl border-2 border-red-200 py-1.5 pr-4 pl-2.5 font-signup placeholder-gray-300 transition duration-300 ease-in-out outline-none hover:border-red-300 focus:border-red-600",
+        className,
       )}
       placeholder={placeholder}
       type={type}
