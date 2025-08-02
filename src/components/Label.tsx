@@ -10,7 +10,7 @@ function Label({ className, htmlFor, children }: PropsWithChildren<Props>) {
   return (
     <label
       className={twMerge(
-        "w-[7rem] p-[0.3rem] text-end font-signup text-[0.9rem] text-gray-500",
+        "w-[7rem] p-[0.3rem] text-end font-secondary text-[0.9rem] text-gray-500",
         className,
       )}
       htmlFor={htmlFor}

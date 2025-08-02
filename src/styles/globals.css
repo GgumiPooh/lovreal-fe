@@ -11,12 +11,17 @@
   @font-face {
     font-family: "Primary";
     src: url("/fonts/Primary.ttf") format("truetype");
-    font-display: swap;
   }
 
   @font-face {
     font-family: "Secondary";
     src: url("/fonts/Secondary.ttf") format("truetype");
+  }
+
+  :root,
+  body,
+  #root {
+    @apply h-full;
   }
 
   button:hover:not(:disabled) {

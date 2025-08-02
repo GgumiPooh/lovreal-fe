@@ -18,7 +18,7 @@ function LabelWithInput({
   children,
 }: PropsWithChildren<Props>) {
   return (
-    <div className={twMerge("m-4 flex items-end", className)}>
+    <div className={twMerge("flex items-end gap-x-3", className)}>
       <Label htmlFor={name}>{children}</Label>
       <Input name={name} id={name} placeholder={placeholder} type={type} />
     </div>

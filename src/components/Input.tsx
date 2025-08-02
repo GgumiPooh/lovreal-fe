@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
@@ -22,28 +22,19 @@ function Input({
 }: Props) {
   const ref = useRef<HTMLInputElement>(null);
 
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    if (!ref.current?.validity) {
-      setMessage("asdasd");
-    }
-  }, [ref.current?.validity]);
-
   return (
     <input
+      className={twMerge(
+        "rounded-2xl border-2 border-red-200 py-1.5 pr-4 pl-2.5 font-secondary placeholder-gray-300 transition duration-300 ease-in-out outline-none hover:border-red-300 focus:border-red-600",
+        className,
+      )}
       ref={ref}
       required
       name={name}
       id={id}
-      className={twMerge(
-        "mx-3 rounded-2xl border-2 border-red-200 py-1.5 pr-4 pl-2.5 font-signup placeholder-gray-300 transition duration-300 ease-in-out outline-none hover:border-red-300 focus:border-red-600",
-        className,
-      )}
       placeholder={placeholder}
       type={type}
       value={value}
-      maxLength={24}
       onChange={handleChange}
     />
   );
