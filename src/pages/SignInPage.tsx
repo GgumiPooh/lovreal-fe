@@ -1,12 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import Box from "../components/Box";
 import Button from "../components/Button";
-import Label from "../components/Label";
 import LabelWithInput from "../components/LabelWithInput";
 import Link from "../components/Link";
-import Radio from "../components/Radio";
 
-function SignUpPage() {
+function SignInPage() {
   const navigate = useNavigate();
 
   return (
@@ -47,27 +45,8 @@ function SignUpPage() {
             비밀번호
           </LabelWithInput>
 
-          <LabelWithInput
-            className="mt-5"
-            align="right"
-            name="passwordCheck"
-            type="password"
-            placeholder="비밀번호를 다시 입력하세요."
-          >
-            비밀번호 확인
-          </LabelWithInput>
-
-          <div className="mt-5 flex items-center gap-x-5">
-            <Label align="right">성별</Label>
-
-            <div className="flex w-full gap-x-7">
-              <Radio label="남" name="gender" value="male" defaultChecked />
-              <Radio label="여" name="gender" value="female" />
-            </div>
-          </div>
-
           <Button className="mt-10" block type="submit">
-            시작하기
+            로그인
           </Button>
         </form>
       </Box>
@@ -79,33 +58,21 @@ function SignUpPage() {
 
     const data = new FormData(event.currentTarget);
 
-    if (
-      data.get("id") === "" ||
-      data.get("password") === "" ||
-      data.get("passwordCheck") === ""
-    ) {
-      alert("모든 필드를 입력해주세요.");
-      return;
-    }
-
-    if (data.get("password") !== data.get("passwordCheck")) {
-      alert("비밀번호를 다시 확인해주세요.");
-      return;
-    }
-
-    const response = await fetch("http://localhost:8080/signUp", {
+    const response = await fetch("http://localhost:8080/login", {
       method: "POST",
-      credentials: "include",
       body: data,
     });
 
-    const result = await response.text();
+    alert(await response.text());
 
-    alert(result);
-
-    if (response.status === 200) {
+    if (response.status == 200) {
+      navigate("/member/requestCouple");
+    } else {
       navigate("/sign-in");
     }
+
+    console.log(response);
   }
 }
-export default SignUpPage;
+
+export default SignInPage;

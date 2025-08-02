@@ -7,7 +7,7 @@ function IntroRoute() {
   return (
     <div className="mx-auto flex h-dvh max-w-120 flex-col py-10 md:py-20">
       <div className="text-end">
-        <Link className="underline" href="/login">
+        <Link className="underline" href="/sign-in">
           로그인
         </Link>
       </div>
@@ -29,7 +29,7 @@ function IntroRoute() {
           </span>
         </Button>
 
-        <Link href="/signup">
+        <Link href="/sign-up">
           <Button className="flex w-full items-center gap-x-7 bg-pink-300 outline-amber-950">
             <span className="font-secondary text-4xl text-brand-pink">LR</span>
             <span className="text-sm text-gray-600">회원가입하기</span>

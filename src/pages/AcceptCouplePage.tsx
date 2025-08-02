@@ -53,7 +53,7 @@ function CouplePage() {
     if (response.status == 200) {
       navigate("/member/couple");
     } else if (response.status == 402) {
-      navigate("/login");
+      navigate("/sign-in");
     }
   }
 }
