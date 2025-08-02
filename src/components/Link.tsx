@@ -10,14 +10,7 @@ type Props = {
 
 function Link({ to, children, className }: Props) {
   return (
-    <_Link
-      rel="canoncial"
-      to={to}
-      className={twMerge(
-        "",
-        className
-      )}
-    >
+    <_Link rel="canoncial" to={to} className={twMerge("", className)}>
       {children}
     </_Link>
   );
