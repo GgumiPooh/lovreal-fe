@@ -11,7 +11,7 @@ function SignUpPage() {
       onSubmit={handleSubmit}
     >
       <Link
-        to="/"
+        href="/"
         className="font-title text-6xl text-pink-800 transition-colors duration-200 ease-in-out outline-none hover:text-amber-950"
       >
         {"<"}

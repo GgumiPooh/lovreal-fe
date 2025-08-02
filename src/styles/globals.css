@@ -1,21 +1,24 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "TitleFont";
-  src: url("/src/fonts/TitleFont.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "SignUpButtonFont";
-  src: url("/src/fonts/SignUpButtonFont.ttf") format("truetype");
-}
-
 @theme {
-  --font-signup: "SignUpButtonFont";
-  --font-title: "TitleFont";
+  --font-primary: "Primary";
+  --font-secondary: "Secondary";
+
+  --color-brand-pink: rgb(144, 41, 91);
 }
 
 @layer base {
+  @font-face {
+    font-family: "Primary";
+    src: url("/fonts/Primary.ttf") format("truetype");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Secondary";
+    src: url("/fonts/Secondary.ttf") format("truetype");
+  }
+
   button:hover:not(:disabled) {
     @apply cursor-pointer;
   }

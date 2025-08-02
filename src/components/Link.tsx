@@ -1,16 +1,20 @@
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 import { Link as _Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-type Props = {
-  to: string;
-  children?: ReactNode;
+type Props = React.ComponentProps<"a"> & {
   className?: string;
+  href: string;
 };
 
-function Link({ to, children, className }: Props) {
+function Link({
+  className,
+  href,
+  children,
+  ...props
+}: PropsWithChildren<Props>) {
   return (
-    <_Link rel="canoncial" to={to} className={twMerge("", className)}>
+    <_Link className={twMerge("", className)} to={href} {...props}>
       {children}
     </_Link>
   );

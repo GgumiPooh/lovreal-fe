@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
+  className?: string;
   name?: string;
   id?: string;
-  className?: string;
   placeholder?: string;
   type?: string;
   value?: string;

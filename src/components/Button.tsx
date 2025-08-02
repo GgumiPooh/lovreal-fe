@@ -1,19 +1,25 @@
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 
-type Props = {
-  type?: "button" | "reset" | "submit";
+type Props = React.ComponentProps<"button"> & {
   className?: string;
-  children?: ReactNode;
-  onClick?: () => void;
+  block?: boolean;
 };
 
-function Button({ className, children, type = "button", onClick }: Props) {
+function Button({
+  className,
+  block = true,
+  type = "button",
+  onClick,
+  children,
+}: PropsWithChildren<Props>) {
   return (
     <button
       type={type}
       className={twMerge(
-        "flex items-center gap-10 overflow-auto rounded-2xl border-2 border-amber-50 p-3 text-center font-signup text-nowrap text-gray-700 transition duration-200 hover:border-amber-950",
+        "font-signup items-center gap-10 overflow-auto rounded-2xl border-2 border-amber-50 p-3 text-center text-nowrap text-gray-700 transition duration-200 hover:border-amber-950",
+        !block && "inline-flex w-fit",
+        block && "flex w-full",
         className,
       )}
       onClick={onClick}

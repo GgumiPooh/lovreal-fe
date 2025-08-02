@@ -5,29 +5,33 @@ import KaKaoIcon from "../icons/KakaoIcon";
 
 function IntroRoute() {
   return (
-    <div className="mx-auto mt-25 max-w-120">
-      <Link to="/login" className="block text-end underline">
-        로그인
-      </Link>
-      <h1 className="mt-8 text-center font-title text-8xl text-[rgb(144,41,91)] drop-shadow-[5px_5px_5px_rgba(252,129,195,0.8)]">
-        lovreal
+    <div className="mx-auto flex h-dvh max-w-120 flex-col py-20">
+      <div className="text-end">
+        <Link className="underline" href="/login">
+          로그인
+        </Link>
+      </div>
+
+      <h1 className="text-center font-primary text-8xl text-brand-pink">
+        LOVREAL
       </h1>
 
-      <div className="flex h-[65vh] flex-col justify-end gap-y-3 px-4">
+      <div className="mt-auto flex flex-col justify-end gap-y-3 px-4">
         <Button className="bg-blue-50 outline-amber-950">
           <GoogleIcon className="size-8" />
-          구글 계정으로 시작하기
+          <span>구글 계정으로 시작하기</span>
         </Button>
+
         <Button className="bg-amber-300 outline-amber-950">
           <KaKaoIcon className="size-8" />
-          카카오 계정으로 시작하기
+          <span>카카오 계정으로 시작하기</span>
         </Button>
-        <Link
-          to="/signup"
-          className="flex items-center gap-10 rounded-2xl border-2 border-pink-300 bg-pink-300 p-2 pl-4 font-signup text-nowrap text-gray-700 outline-amber-950 transition duration-300 hover:border-amber-950"
-        >
-          <span className="font-title text-4xl text-[rgb(144,41,91)]">LR</span>
-          회원가입하기
+
+        <Link href="/signup">
+          <Button className="bg-pink-300 text-nowrap outline-amber-950">
+            <span className="font-primary text-4xl text-brand-pink">LR</span>
+            <span className="font-secondary text-gray-700">회원가입하기</span>
+          </Button>
         </Link>
       </div>
     </div>

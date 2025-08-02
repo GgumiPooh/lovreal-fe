@@ -1,12 +1,12 @@
+import type { PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
   className?: string;
   htmlFor?: string;
-  children?: string;
 };
 
-function Label({ className, htmlFor, children }: Props) {
+function Label({ className, htmlFor, children }: PropsWithChildren<Props>) {
   return (
     <label
       className={twMerge(
