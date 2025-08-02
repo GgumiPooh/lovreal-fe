@@ -5,6 +5,9 @@ import Label from "./Label";
 
 type Props = {
   className?: string;
+  labelClassName?: string;
+  inputClassName?: string;
+  align?: "left" | "right";
   name?: string;
   placeholder?: string;
   type?: string;
@@ -12,15 +15,36 @@ type Props = {
 
 function LabelWithInput({
   className,
+  labelClassName,
+  inputClassName,
+  align = "left",
   name,
-  placeholder,
   type,
+  placeholder,
   children,
 }: PropsWithChildren<Props>) {
   return (
-    <div className={twMerge("flex items-end gap-x-3", className)}>
-      <Label htmlFor={name}>{children}</Label>
-      <Input name={name} id={name} placeholder={placeholder} type={type} />
+    <div
+      className={twMerge(
+        "flex items-center gap-x-3",
+        align === "right" && "justify-end",
+        className,
+      )}
+    >
+      <Label
+        className={twMerge("", labelClassName)}
+        htmlFor={name}
+        align={align}
+      >
+        {children}
+      </Label>
+      <Input
+        className={twMerge("w-full", inputClassName)}
+        name={name}
+        id={name}
+        placeholder={placeholder}
+        type={type}
+      />
     </div>
   );
 }

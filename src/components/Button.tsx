@@ -8,20 +8,19 @@ type Props = React.ComponentProps<"button"> & {
 
 function Button({
   className,
-  block = true,
   type = "button",
+  block,
   onClick,
   children,
 }: PropsWithChildren<Props>) {
   return (
     <button
-      type={type}
       className={twMerge(
-        "font-signup items-center gap-10 overflow-auto rounded-2xl border-2 border-amber-50 p-3 text-center text-nowrap text-gray-700 transition duration-200 hover:border-amber-950",
-        !block && "inline-flex w-fit",
-        block && "flex w-full",
+        "font-signup rounded-2xl border-2 border-amber-50 bg-brand-pink p-3 text-center text-nowrap text-red-100 transition duration-200 hover:border-amber-900",
+        block && "w-full",
         className,
       )}
+      type={type}
       onClick={onClick}
     >
       {children}

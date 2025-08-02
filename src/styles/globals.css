@@ -24,6 +24,10 @@
     @apply h-full;
   }
 
+  body {
+    @apply font-primary;
+  }
+
   button:hover:not(:disabled) {
     @apply cursor-pointer;
   }
