@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Box from "../components/Box";
 
 function CouplePage() {
   const [data, setData] = useState(null);
@@ -8,11 +9,13 @@ function CouplePage() {
     // GET 요청 보내기
     const fetchCoupleData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/couple", {
-          method: "GET",
-          credentials: "include",
-          headers: { "content-type": "application/json" },
-        });
+        const response = await fetch(
+          "http://localhost:8080/member/couplePage",
+          {
+            method: "GET",
+            credentials: "include",
+          },
+        );
         const data = await response.json();
         console.log("Received data:", data);
         setData(data);
@@ -29,9 +32,11 @@ function CouplePage() {
   }
 
   return (
-    <div>
-      <div id="memberId">👤 Member ID: {data.id}</div>
-      <div id="sendrequest">your love : {data.coupleRequest}</div>
+    <div className="flex h-full items-center justify-center">
+      <Box>
+        <div id="memberId">👤 Member ID: {data.id}</div>
+        <div id="sendrequest">your love : {data.partnerId}</div>
+      </Box>
     </div>
   );
 }

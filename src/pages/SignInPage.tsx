@@ -67,7 +67,9 @@ function SignInPage() {
     alert(await response.text());
 
     if (response.status == 200) {
-      navigate("/member/inviteCode");
+      navigate("/member/inputInviteCode");
+    } else if (response.status == 201) {
+      navigate("/member/couplePage");
     } else {
       navigate("/sign-in");
     }

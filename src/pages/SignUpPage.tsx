@@ -93,7 +93,7 @@ function SignUpPage() {
       return;
     }
 
-    const response = await fetch("http://localhost:8080/signUp", {
+    const response = await fetch("http://localhost:8080/public/signUp", {
       method: "POST",
       credentials: "include",
       body: data,

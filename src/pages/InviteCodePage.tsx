@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Box from "../components/Box";
+import Link from "../components/Link";
 
 function InviteCodePage() {
   const [data, setData] = useState("");
@@ -42,11 +43,20 @@ function InviteCodePage() {
   return (
     <div className="flex h-full items-center justify-center">
       <Box>
-        <div id="memberId" className="font-signup inline-block">
-          커플 초대 코드: {data}
+        <Link
+          className="group flex gap-x-3 text-brand-pink transition-colors duration-200 hover:text-amber-950"
+          href="/member/inputInviteCode"
+        >
+          <div className="font-secondary text-5xl">{"<"}</div>
+        </Link>
+        <h2 className="mb-10 text-center text-2xl text-pink-800">
+          초대코드를 전송해주세요!
+        </h2>
+        <div id="memberId" className="font-signup inline-block text-xl">
+          커플 초대 코드 : {data}
         </div>
         <button
-          className={`ml-8 rounded-2xl bg-pink-200 p-1.5 text-gray-500 transition-all duration-300 ${copied ? "pointer-events-none" : "hover:text-black"}`}
+          className={`ml-8 rounded-2xl bg-pink-100 p-2.5 text-xs text-gray-500 transition-all duration-300 ${copied ? "pointer-events-none" : "hover:text-black"}`}
           onClick={copyToCode}
         >
           {copied ? "복사됨" : "복사하기"}
