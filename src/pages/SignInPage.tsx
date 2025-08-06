@@ -58,15 +58,16 @@ function SignInPage() {
 
     const data = new FormData(event.currentTarget);
 
-    const response = await fetch("http://localhost:8080/login", {
+    const response = await fetch("http://localhost:8080/public/login", {
       method: "POST",
       body: data,
+      credentials: "include",
     });
 
     alert(await response.text());
 
     if (response.status == 200) {
-      navigate("/member/requestCouple");
+      navigate("/member/inviteCode");
     } else {
       navigate("/sign-in");
     }
