@@ -45,9 +45,9 @@ function InviteCodePage() {
       <Box>
         <Link
           className="group flex gap-x-3 text-brand-pink transition-colors duration-200 hover:text-amber-950"
-          href="/member/inputInviteCode"
+          href="/member/recieveOrSend"
         >
-          <div className="font-secondary text-5xl">{"<"}</div>
+          <div className="font-secondary text-6xl">{"<"}</div>
         </Link>
         <h2 className="mb-10 text-center text-2xl text-pink-800">
           초대코드를 전송해주세요!

@@ -67,11 +67,11 @@ function SignInPage() {
     alert(await response.text());
 
     if (response.status == 200) {
-      navigate("/member/inputInviteCode");
+      navigate("/member/recieveOrSend");
     } else if (response.status == 201) {
       navigate("/member/couplePage");
     } else {
-      navigate("/sign-in");
+      navigate("/");
     }
 
     console.log(response);
