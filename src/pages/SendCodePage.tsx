@@ -4,7 +4,7 @@ import Button from "../components/Button";
 import LabelWithInput from "../components/LabelWithInput";
 import Link from "../components/Link";
 
-function InputInvCoPage() {
+function SendCodePage() {
   const navigate = useNavigate();
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -52,4 +52,4 @@ function InputInvCoPage() {
   );
 }
 
-export default InputInvCoPage;
+export default SendCodePage;

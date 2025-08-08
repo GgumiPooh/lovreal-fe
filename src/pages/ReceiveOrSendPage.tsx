@@ -20,13 +20,10 @@ function ReceiveOrSendPage() {
   return (
     <div className="flex h-full items-center justify-center">
       <Box>
-        <Link href="/member/inputInviteCode">
+        <Link href="/member/SendCode">
           <Button className="inline-block">커플요청보내기</Button>
         </Link>
         <Button onClick={handleClick}>내 초대코드</Button>
-        <Link href="/member/">
-          <Button className="inline-block">받은 요청 보기</Button>
-        </Link>
       </Box>
     </div>
   );
