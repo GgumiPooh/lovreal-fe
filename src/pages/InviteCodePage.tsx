@@ -6,7 +6,7 @@ function InviteCodePage() {
   const [data, setData] = useState("");
   useEffect(() => {
     // GET 요청 보내기
-    const fetchCoupleData = async () => {
+    const fetchInviteCodeData = async () => {
       try {
         const response = await fetch(
           "http://localhost:8080/member/inviteCode",
@@ -23,7 +23,7 @@ function InviteCodePage() {
       }
     };
 
-    fetchCoupleData();
+    fetchInviteCodeData();
   }, []);
 
   const [copied, setCopied] = useState(false);

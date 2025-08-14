@@ -69,7 +69,7 @@ function SignInPage() {
     if (response.status == 200) {
       navigate("/member/recieveOrSend");
     } else if (response.status == 201) {
-      navigate("/member/couplePage");
+      navigate("/member/couple");
     } else {
       navigate("/");
     }

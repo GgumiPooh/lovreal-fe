@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CouplePage from "./pages/CouplePage";
 import IntroRoute from "./pages/IntroPage";
 import InviteCodePage from "./pages/InviteCodePage";
 import ReceiveOrSendPage from "./pages/ReceiveOrSendPage";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/member/sendCode" element={<SendCodePage />} />
         <Route path="/member/inviteCode" element={<InviteCodePage />} />
         <Route path="/member/recieveOrSend" element={<ReceiveOrSendPage />} />
+        <Route path="/member/couple" element={<CouplePage />} />
       </Routes>
     </BrowserRouter>
   );
