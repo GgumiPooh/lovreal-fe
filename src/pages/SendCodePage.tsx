@@ -18,11 +18,13 @@ function SendCodePage() {
       },
     );
     const result = await response.text();
+    alert(result);
     if (response.status === 200) {
-      alert(result);
+      navigate("/member/couple");
+    } else if (response.status === 400) {
+      navigate("/member/SendCode");
+    } else {
       navigate("/");
-    } else if (response.status === 401) {
-      alert(result);
     }
   }
   return (

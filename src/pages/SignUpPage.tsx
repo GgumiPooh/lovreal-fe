@@ -30,6 +30,16 @@ function SignUpPage() {
           <LabelWithInput
             className="mt-10"
             align="right"
+            name="nickname"
+            type="text"
+            placeholder="닉네임를 입력하세요."
+          >
+            닉네임
+          </LabelWithInput>
+
+          <LabelWithInput
+            className="mt-10"
+            align="right"
             name="id"
             type="text"
             placeholder="아이디를 입력하세요."
@@ -80,6 +90,7 @@ function SignUpPage() {
     const data = new FormData(event.currentTarget);
 
     if (
+      data.get("nickname") === "" ||
       data.get("id") === "" ||
       data.get("password") === "" ||
       data.get("passwordCheck") === ""
