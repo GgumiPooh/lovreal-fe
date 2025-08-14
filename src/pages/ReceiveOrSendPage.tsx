@@ -23,7 +23,9 @@ function ReceiveOrSendPage() {
         <Link href="/member/SendCode">
           <Button className="inline-block">커플요청보내기</Button>
         </Link>
-        <Button onClick={handleClick}>내 초대코드</Button>
+        <Link href="/member/inviteCode">
+          <Button onClick={handleClick}>내 초대코드</Button>
+        </Link>
       </Box>
     </div>
   );
