@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CouplePage from "./pages/CouplePage";
+import CouplePage from "./pages/CoupleDatePage";
 import IntroRoute from "./pages/IntroPage";
 import InviteCodePage from "./pages/InviteCodePage";
+import MemberProfilePage from "./pages/MemberProfilePage";
 import ReceiveOrSendPage from "./pages/ReceiveOrSendPage";
 import SendCodePage from "./pages/SendCodePage";
 import SignInPage from "./pages/SignInPage";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/member/inviteCode" element={<InviteCodePage />} />
         <Route path="/member/recieveOrSend" element={<ReceiveOrSendPage />} />
         <Route path="/member/couple" element={<CouplePage />} />
+        <Route path="/member/profile" element={<MemberProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

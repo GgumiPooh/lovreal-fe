@@ -42,7 +42,7 @@ function CouplePage() {
 
     alert(await response.text());
     if (response.status == 200) {
-      navigator("/member/couple");
+      navigator("/member/profile");
     } else {
       navigator("/member/couple");
     }
@@ -63,6 +63,7 @@ function CouplePage() {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setDate(e.target.value)
             }
+            className="pr-3"
           />
           <Button className="py-2" onClick={handleClick}>
             완료
