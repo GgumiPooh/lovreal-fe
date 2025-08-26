@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "../components/Box";
 
 function MemberProfilePage() {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await fetch("http://localhost:8080/member/home", {
+        await fetch("http://localhost:8080/member/profile", {
           method: "GET",
           credentials: "include",
         })
           .then((res) => res.json())
           .then((data) => {
+            if (data === null) {
+              navigate("/sign-in");
+            }
             setData(data);
             console.log("Received data:", data);
           });
@@ -20,6 +25,20 @@ function MemberProfilePage() {
       }
     };
     fetchData();
+  }, []);
+  useEffect(() => {
+    async function re() {
+      const response = await fetch("http://localhost:8080/member/profile", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (response.status == 401) {
+        alert(await response.text());
+        navigate("/sign-in");
+      }
+    }
+    re();
   }, []);
 
   return (

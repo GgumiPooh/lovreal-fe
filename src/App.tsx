@@ -3,6 +3,7 @@ import CouplePage from "./pages/CoupleDatePage";
 import IntroRoute from "./pages/IntroPage";
 import InviteCodePage from "./pages/InviteCodePage";
 import MemberProfilePage from "./pages/MemberProfilePage";
+import NewStoryPage from "./pages/NewStoryPage";
 import ReceiveOrSendPage from "./pages/ReceiveOrSendPage";
 import SendCodePage from "./pages/SendCodePage";
 import SignInPage from "./pages/SignInPage";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/member/recieveOrSend" element={<ReceiveOrSendPage />} />
         <Route path="/member/couple" element={<CouplePage />} />
         <Route path="/member/profile" element={<MemberProfilePage />} />
+        <Route path="/member/newStory" element={<NewStoryPage />} />
       </Routes>
     </BrowserRouter>
   );
