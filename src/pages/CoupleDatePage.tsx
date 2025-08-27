@@ -9,7 +9,7 @@ function CouplePage() {
   useEffect(() => {
     const fetchCoupleData = async () => {
       try {
-        fetch("http://localhost:8080/member/couple", {
+        fetch("http://localhost:8080/api/member/couple", {
           credentials: "include",
         })
           .then((res) => res.json())

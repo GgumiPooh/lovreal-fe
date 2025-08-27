@@ -6,10 +6,13 @@ import Link from "../components/Link";
 function ReceiveOrSendPage() {
   const navigate = useNavigate();
   async function handleClick() {
-    const response = await fetch("http://localhost:8080/member/inviteCode", {
-      method: "POST",
-      credentials: "include",
-    });
+    const response = await fetch(
+      "http://localhost:8080/api/member/invite-code",
+      {
+        method: "POST",
+        credentials: "include",
+      },
+    );
     const result = await response.text();
     if (response.status === 200) {
       navigate("/member/inviteCode");

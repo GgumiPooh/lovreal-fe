@@ -58,7 +58,7 @@ function SignInPage() {
 
     const data = new FormData(event.currentTarget);
 
-    const response = await fetch("http://localhost:8080/public/login", {
+    const response = await fetch("http://localhost:8080/api/public/login", {
       method: "POST",
       body: data,
       credentials: "include",

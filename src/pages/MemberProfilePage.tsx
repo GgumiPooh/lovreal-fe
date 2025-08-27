@@ -28,7 +28,7 @@ function MemberProfilePage() {
   }, []);
   useEffect(() => {
     async function re() {
-      const response = await fetch("http://localhost:8080/member/profile", {
+      const response = await fetch("http://localhost:8080/api/member/profile", {
         method: "POST",
         credentials: "include",
       });

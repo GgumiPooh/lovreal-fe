@@ -11,7 +11,7 @@ function SendCodePage() {
     const formData = new FormData(event.currentTarget);
     const inviteCode = formData.get("inviteCode");
     const response = await fetch(
-      `http://localhost:8080/member/inputInviteCode?inviteCode=${encodeURIComponent(inviteCode)}`,
+      `http://localhost:8080/api/member/input-invite-code?inviteCode=${encodeURIComponent(inviteCode)}`,
       {
         method: "POST",
         credentials: "include",

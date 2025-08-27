@@ -9,7 +9,7 @@ function InviteCodePage() {
     const fetchInviteCodeData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/member/inviteCode",
+          "http://localhost:8080/api/member/invite-code",
           {
             method: "GET",
             credentials: "include",
