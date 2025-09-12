@@ -13,10 +13,13 @@ function InviteCodePage() {
           {
             method: "GET",
             credentials: "include",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+            },
           },
         );
         const data = await response.text();
-        console.log("Received data:", data);
+        console.log("Received data:", response);
         setData(data);
       } catch (error) {
         console.error("Fetch failed:", error);

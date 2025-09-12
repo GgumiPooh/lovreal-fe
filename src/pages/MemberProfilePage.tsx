@@ -8,7 +8,7 @@ function MemberProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await fetch("http://localhost:8080/member/profile", {
+        await fetch("http://localhost:8080/api/member/profile", {
           method: "GET",
           credentials: "include",
         })
@@ -30,7 +30,9 @@ function MemberProfilePage() {
     async function re() {
       const response = await fetch("http://localhost:8080/api/member/profile", {
         method: "POST",
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
       });
 
       if (response.status == 401) {

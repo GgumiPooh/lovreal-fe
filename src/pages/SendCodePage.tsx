@@ -14,7 +14,9 @@ function SendCodePage() {
       `http://localhost:8080/api/member/input-invite-code?inviteCode=${encodeURIComponent(inviteCode)}`,
       {
         method: "POST",
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
       },
     );
     const result = await response.text();

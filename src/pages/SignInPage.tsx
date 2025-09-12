@@ -61,22 +61,20 @@ function SignInPage() {
     const response = await fetch("http://localhost:8080/api/public/login", {
       method: "POST",
       body: data,
-      credentials: "include",
     });
 
-    alert(await response.text());
+    // alert(await response.text());
 
     if (response.status == 200) {
-      navigate("/member/recieveOrSend");
+      localStorage.setItem("jwt", await response.text());
+      navigate("/member/newStory");
     } else if (response.status == 201) {
       navigate("/member/couple");
     } else if (response.status == 202) {
-      navigate("/member/profile");
+      navigate("/member/recieveOrSend");
     } else {
-      navigate("/");
+      // navigate("/");
     }
-
-    console.log(response);
   }
 }
 

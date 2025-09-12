@@ -8,6 +8,7 @@ import ReceiveOrSendPage from "./pages/ReceiveOrSendPage";
 import SendCodePage from "./pages/SendCodePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import StoryPage from "./pages/StoryPage";
 import "./styles/globals.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/member/couple" element={<CouplePage />} />
         <Route path="/member/profile" element={<MemberProfilePage />} />
         <Route path="/member/newStory" element={<NewStoryPage />} />
+        <Route path="/member/StoryPage" element={<StoryPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -10,6 +10,7 @@ type PreviewItem = {
 };
 
 const MAX_FILES = 4;
+const MAX_CONTENT_LENGTH = 200;
 
 export default function NewStoryPage(): JSX.Element {
   const [previews, setPreviews] = useState<PreviewItem[]>([]);
@@ -88,26 +89,28 @@ export default function NewStoryPage(): JSX.Element {
     previews.forEach((p) => {
       formData.append("images", p.file);
     });
-
+    console.log(formData.get("images"));
     const response = await fetch("http://localhost:8080/api/member/new-story", {
       method: "POST",
       body: formData,
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
     });
 
-    if (response.status === 401) {
-      alert(await response.text());
-      navigate("/sign-in");
-      return;
+    const result = await response.json();
+    alert(result.message);
+    if (response.ok) {
+      navigate("/member/storyPage");
     }
-
-    const result = await response.text();
-    alert(result);
+    if (response.status == 401) {
+      navigate("/sign-in");
+    }
   }
 
   return (
     <div className="flex h-full items-center justify-center p-4">
-      <Box className="w-full max-w-md">
+      <Box className="w-full max-w-3xl">
         {/* 에러 영역: 높이 고정으로 레이아웃 흔들림 방지 */}
         <div className="min-h-[20px]">
           {errorMessage && (
@@ -117,87 +120,90 @@ export default function NewStoryPage(): JSX.Element {
           )}
         </div>
 
-        {/* 4칸 고정 그리드: 이미지가 없을 때도 같은 높이 유지 */}
-        <div className="grid grid-cols-2 gap-3">
-          {slots.map((slotIndex) => {
-            const item = previews[slotIndex];
+        <div className="flex flex-row gap-18">
+          {/* 4칸 고정 그리드: 이미지가 없을 때도 같은 높이 유지 */}
+          <div className="grid grid-cols-2 gap-3">
+            {slots.map((slotIndex) => {
+              const item = previews[slotIndex];
 
-            if (item) {
-              const { id, url, file } = item;
-              return (
-                <figure
-                  key={id}
-                  className="relative rounded-xl bg-gray-100 p-2 shadow"
-                >
-                  {/* 이미지 영역: 항상 정사각형 공간을 선점 */}
-                  <div className="aspect-square w-full overflow-hidden rounded-lg">
-                    <img
-                      src={url}
-                      alt={`Preview ${slotIndex + 1}`}
-                      className="h-full w-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  {/* 캡션 영역: 높이 고정 */}
-                  {/* <div className="mt-1 h-5">
+              if (item) {
+                const { id, url, file } = item;
+                return (
+                  <figure
+                    key={id}
+                    className="relative rounded-xl bg-gray-100 p-2 shadow"
+                  >
+                    {/* 이미지 영역: 항상 정사각형 공간을 선점 */}
+                    <div className="aspect-square overflow-hidden rounded-lg">
+                      <img
+                        src={url}
+                        alt={`Preview ${slotIndex + 1}`}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    {/* 캡션 영역: 높이 고정 */}
+                    {/* <div className="mt-1 h-5">
                     <figcaption className="truncate text-xs text-gray-600">
                       {file.name} ({Math.round(file.size / 1024)} KB)
                     </figcaption>
                   </div> */}
-                  <button
-                    type="button"
-                    onClick={() => removeOne(id)}
-                    className="absolute top-2 right-2 rounded-md bg-black/60 px-2 py-1 text-xs text-white"
-                    aria-label={`Remove image ${slotIndex + 1}`}
-                  >
-                    ×
-                  </button>
-                </figure>
+                    <button
+                      type="button"
+                      onClick={() => removeOne(id)}
+                      className="absolute top-2 left-42 rounded-md bg-black/60 px-2 py-1 text-xs text-white"
+                      aria-label={`Remove image ${slotIndex + 1}`}
+                    >
+                      ×
+                    </button>
+                  </figure>
+                );
+              }
+
+              // 빈 슬롯: 회색 배경 플레이스홀더 (이미지 영역+캡션 영역 높이 동일)
+              return (
+                <label
+                  key={`placeholder-${slotIndex}`}
+                  htmlFor="img"
+                  className="flex w-50 cursor-pointer items-center justify-center rounded-xl bg-gray-100 p-2 shadow"
+                  aria-label={`Add image in slot ${slotIndex + 1}`}
+                >
+                  <div className="flex aspect-square w-full items-center justify-center rounded-lg border-2 border-dashed border-gray-300 text-gray-400">
+                    + Add image
+                  </div>
+                  <div className="mt-1 h-5" />
+                </label>
               );
-            }
+            })}
+          </div>
 
-            // 빈 슬롯: 회색 배경 플레이스홀더 (이미지 영역+캡션 영역 높이 동일)
-            return (
-              <label
-                key={`placeholder-${slotIndex}`}
-                htmlFor="img"
-                className="flex cursor-pointer items-center justify-center rounded-xl bg-gray-100 p-2 shadow"
-                aria-label={`Add image in slot ${slotIndex + 1}`}
-              >
-                <div className="flex aspect-square w-full items-center justify-center rounded-lg border-2 border-dashed border-gray-300 text-gray-400">
-                  + Add image
-                </div>
-                <div className="mt-1 h-5" />
-              </label>
-            );
-          })}
+          {/* 숨긴 파일 입력 */}
+          <form onSubmit={(e) => handleClick(e, previews, content)}>
+            <input
+              id="img"
+              className="sr-only"
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={(e) => {
+                const files = Array.from(e.currentTarget.files ?? []);
+                appendFiles(files);
+                e.currentTarget.value = ""; // 동일 파일 재선택 허용
+              }}
+            />
+            <textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              className="textarea h-80 rounded-md border-2 border-gray-200 p-2 outline-none hover:border-pink-200 focus:border-pink-200"
+            ></textarea>
+            <div className="text-right text-sm text-gray-500">
+              {content.length}/{MAX_CONTENT_LENGTH}
+            </div>
+            <Button type="submit" className="absolute right-100 bottom-60">
+              {"작성완료"}
+            </Button>
+          </form>
         </div>
-
-        {/* 숨긴 파일 입력 */}
-        <form onSubmit={(e) => handleClick(e, previews, content)}>
-          <input
-            id="img"
-            className="sr-only"
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={(e) => {
-              const files = Array.from(e.currentTarget.files ?? []);
-              appendFiles(files);
-              e.currentTarget.value = ""; // 동일 파일 재선택 허용
-            }}
-          />
-          <input
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          ></input>
-          <Button
-            type="submit"
-            // onClick={(e) => handleClick(e, previews, content)}
-          >
-            {"-->"}
-          </Button>
-        </form>
       </Box>
     </div>
   );

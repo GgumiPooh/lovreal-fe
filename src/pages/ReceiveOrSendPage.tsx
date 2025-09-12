@@ -10,14 +10,17 @@ function ReceiveOrSendPage() {
       "http://localhost:8080/api/member/invite-code",
       {
         method: "POST",
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
       },
     );
-    const result = await response.text();
+    console.log("asd");
+    // const result = await response.text();
     if (response.status === 200) {
       navigate("/member/inviteCode");
     } else if (response.status === 401) {
-      alert(result);
+      // alert(result);
     }
   }
   return (

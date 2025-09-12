@@ -9,8 +9,11 @@ function CouplePage() {
   useEffect(() => {
     const fetchCoupleData = async () => {
       try {
-        fetch("http://localhost:8080/api/member/couple", {
-          credentials: "include",
+        fetch("http://localhost:8080/api/member/couple-date", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
         })
           .then((res) => res.json())
           .then((data) => {
@@ -33,16 +36,22 @@ function CouplePage() {
     const month = coupleDate.getMonth() + 1;
     const day = coupleDate.getDate();
 
-    const response = await fetch("http://localhost:8080/member/coupleDate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ year, month, day }),
-      credentials: "include",
-    });
+    const response = await fetch(
+      "http://localhost:8080/api/member/couple-date",
+      {
+        method: "POST",
+        body: JSON.stringify({ year, month, day }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      },
+    );
+    const result = await response.json();
 
-    alert(await response.text());
-    if (response.status == 200) {
-      navigator("/member/profile");
+    alert(result.message);
+    if (response.ok) {
+      navigator("/member/couple");
     } else {
       navigator("/member/couple");
     }
